@@ -1,0 +1,12 @@
+.container
+   h1 ShortLink App
+   form(method="post")
+       input(type="text", name="url", id="url")
+       input(type="submit", value="shorten", id="submit")
+       if typeof(error) != 'undefined'
+           .result #{error}
+       else if typeof(shortcode) != 'undefined'
+           .result
+               Your shortened URL is: 
+               a(href=shortcode) #{shortcode}
+
