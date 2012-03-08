@@ -1,0 +1,61 @@
+body {
+    padding-top: 60px;
+    padding-buttom: 40px;
+}
+.masthead {
+    padding-top: 18px;
+}
+.masthead h1, .masthead p {
+    text-align: center;
+}
+.masthead h1 {
+    font-size: 60px;
+    letter-spacing: -1;
+    line-height: 1;
+    margin-bottom: 9px;
+}
+.masthead p {
+    font-size: 20px;
+    line-height: 27px;
+    margin-bottom: 18px;
+    font-weight: 300;
+}
+hr {
+    margin: 18px 0;
+    border: 0;
+    border-top: 1px solif #EEE;
+    border-bottom: 1px solid white;
+}
+hr.soften {
+    height: 1px;
+    margin: 54px 0;
+    background-image: -webkit-linear-gradient(left, transparent, rgba(0, 0, 0, .1), transparent);
+    background-image: -moz-linear-gradient(left, transparent, rgba(0, 0, 0, .1), transparent);
+    background-image: -ms-linear-gradient(left, transparent, rgba(0, 0, 0, .1), transparent);
+    background-image: -o-linear-gradient(left, transparent, rgba(0, 0, 0, .1), transparent);
+    border: 0;
+}
+#input-url {
+    display: block;
+    width: 100%;
+    height: 44px;
+    font-size: 24px;
+    line-height: 1;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+}
+#btn-submit {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 20px;
+    line-height: 1;
+    margin: 12px auto;
+}
+.footer {
+    margin-top: 45px;
+    padding: 25px 0 46px;
+    border-top: 1px solid #E5E5E5;
+}

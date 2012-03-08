@@ -1,44 +1,70 @@
 .navbar.navbar-fixed-top
-    .navbar-inner
-        .container
-            a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
-                span.icon-bar
-                span.icon-bar
-                span.icon-bar
-            a.brand(href='#') URL Shortener
-            .nav-collapse
-                ul.nav
-                    li.active
-                        a(href='#home') Home
-                    li
-                        a(href='#api') API
+  .navbar-inner
+    .container
+      a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+        a.brand(href='#') URL Shortener
+        .nav-collapse
+          ul.nav
+            li.active
+              a(href='#home') Home
+            li
+              a(href='#api') API
 .container
-//    header.masthead
-//        .inner
-//            h1 URL Shortener
-//            p.
-//                Simple URL shortener implemented in Node.js
-//            p.shortener
-//                form.form-inline(method='post')
-//                    input(
-    .rows
-        .span10.offset1
-            .hero-unit
-                h1 URL Shortener
-                p.
-                    This is a simple URL shortener implemented in Node.js
-                form.form-inline(method="post")
-                    p
-                        input.span8(type="text", name="url", id="url-input", placeholder="Enter URL here...")
-                        //button.btn.btn-primary.btn-large.span2(value="shorten", id="submit") Submit
-                    p
-                        if typeof(error) != 'undefined'
-                            .alert.alert-error
-                                a.close(data-dismiss='alert') &times;
-                                //i.icon-exclamation-sign
-                                #{error}
-                        else if typeof(shortUrl) != 'undefined'
-                            .alert.alert-success Your shortened URL is: 
-                                a(href="http://#{shortUrl}") #{shortUrl}
-            #api
-
+  header.masthead#home
+    .inner
+      h1 URL Shortener
+      p.
+        Simple URL shortener implemented in Node.js
+      p.shortener
+        form.well(method='post')
+          input#input-url(type="text", name="url", placeholder="Enter URL here...")
+          button.btn.btn-primary#btn-submit Shorten!
+          if typeof(error) != 'undefined'
+            .alert.alert-error
+              a.close(data-dismiss='alert') &times;
+              h4.alert-heading #{error}
+          else if typeof(shortUrl) != 'undefined'
+            .alert.alert-success Your shortened URL is: 
+              a(href="http://#{shortUrl}") #{shortUrl}
+  hr.soften
+  section#api
+    h1 API
+    p URL Shortener API allows third-party applications to shorten URLs.
+    h2 Basics
+    p API methods are accessible via very simple HTTP calls. This is optimized for ease of implementation.
+    p Simply hit the provided URLs with their respective parameters, and a simple JSON response is sent. The HTTP status code reflects whether the action succeeds.
+    p Paramaters may be passed via POST ot the query string (GET) or mixed combination. However, if you are using POST, JSON request body is also accepted.
+    p The response content is returned as JSON in response.
+    h2 Getting short URLs
+    p
+      strong Path:&nbsp;
+      code /1
+      p Parameters:
+      ul
+        li
+          code url
+            &nbsp;—&nbsp;the URL you want to get shortened.
+        p Response:
+        ul
+          li
+            code error
+            &nbsp;—&nbsp;the error message of last operation.
+          li
+            code shortUrl
+            &nbsp;—&nbsp;the shortened URL.
+    h2 Getting long URL from short URLs
+      p In future plan.
+    h2 Getting Visit Statistics
+      p In future plan.
+  footer.footer
+    p.pull-right
+      a(href='#') Back to top
+    p Created by metaphysiks for learning purpose.
+//scripts
+script(src='/assets/js/jquery.js')
+script(src='/assets/js/bootstrap-scrollspy.js')
+script(src='/assets/js/bootstrap-collapse.js')
+script(src='/assets/js/bootstrap-alert.js')
