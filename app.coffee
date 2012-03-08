@@ -11,8 +11,9 @@ db = redis.createClient()
 # Config
 app.configure ->
     app.set 'view engine', 'jade'
+    app.set 'view options', pretty: true
     app.use express.bodyParser()
-    app.use express.static(__dirname + '/public')
+    app.use '/assets', express.static(__dirname + '/assets')
     app.use express.favicon(__dirname + '/public/favicon.ico')
     app.use app.router # inferior to static so that static file resolution works
 
@@ -35,20 +36,43 @@ app.get '/', (req, res) ->
     res.render 'index'
 
 app.post '/', (req, res) ->
-    data = {}
-    # Trim & validate URL
-    url = req.body.url.trim()
-    if not isURL url
-        data.error = 'Invalid URL!' if not isURL url
+    getShortUrl req.body.url, req.header('Host'), (data) ->
         res.render 'index', data
+
+# API at /1 to retrieve short URL
+# GET or POST request using query string or json
+# example:
+# localhost:3000/1?url=www.google.com
+# --> { shortcode: localhost:3000/xxx }
+# localhost:3000/1?url=errorURL
+# --> { error: 'Invalid URL!' }
+# Beware of the Content-Type!
+app.all '/1/:url?', (req, res) ->
+    if req.param('url')
+        # GET with query string
+        getShortUrl req.param('url'), req.header('Host'), (data) ->
+            res.json data
     else
-        getShortCode url, (err, short) ->
-            data.shortcode = short
-            res.render 'index', data
+        res.send 404
+
 
 app.get '/:shortcode', (req, res) ->
     getUrl req.params.shortcode, (err, url) ->
         if url then res.redirect(url, 302) else res.redirect('/')
+
+# Get short URL
+# Callback parameter: (data)
+getShortUrl = (url, host, cb) ->
+    data = {}
+    # Trim & validate URL
+    url = url.trim()
+    if not isURL url
+        data.error = 'Invalid URL!'
+        cb(data)
+    else
+        getShortCode url, (err, short) ->
+            data.shortUrl = "#{host}/#{short}"
+            cb(data)
 
 # Get short code
 getShortCode = (url, cb) ->

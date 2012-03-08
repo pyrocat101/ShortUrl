@@ -1,6 +1,24 @@
-!!!
+!!! 5
 html
-  head
-    title ShortLink App
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body!= body
+    head
+        meta(charset='utf-8')
+        title URL Shortener
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet', href='/assets/css/bootstrap.css')
+        style(type='text/css')
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+            #url-input {
+                font-size: 16px;
+                height: 28px;
+                margin-right: 8px;
+            }
+        link(rel='stylesheet', href='/assets/css/bootstrap-responsive.css')
+        //[if lt IE 9]
+            script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
+    body!= body
+        script(src='/assets/js/jquery.js')
+        script(src='/assets/js/bootstrap-scrollspy.js')
+        script(src='/assets/js/bootstrap-collapse.js')

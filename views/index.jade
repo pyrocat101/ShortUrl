@@ -1,12 +1,44 @@
+.navbar.navbar-fixed-top
+    .navbar-inner
+        .container
+            a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+            a.brand(href='#') URL Shortener
+            .nav-collapse
+                ul.nav
+                    li.active
+                        a(href='#home') Home
+                    li
+                        a(href='#api') API
 .container
-   h1 ShortLink App
-   form(method="post")
-       input(type="text", name="url", id="url")
-       input(type="submit", value="shorten", id="submit")
-       if typeof(error) != 'undefined'
-           .result #{error}
-       else if typeof(shortcode) != 'undefined'
-           .result
-               Your shortened URL is: 
-               a(href=shortcode) #{shortcode}
+//    header.masthead
+//        .inner
+//            h1 URL Shortener
+//            p.
+//                Simple URL shortener implemented in Node.js
+//            p.shortener
+//                form.form-inline(method='post')
+//                    input(
+    .rows
+        .span10.offset1
+            .hero-unit
+                h1 URL Shortener
+                p.
+                    This is a simple URL shortener implemented in Node.js
+                form.form-inline(method="post")
+                    p
+                        input.span8(type="text", name="url", id="url-input", placeholder="Enter URL here...")
+                        //button.btn.btn-primary.btn-large.span2(value="shorten", id="submit") Submit
+                    p
+                        if typeof(error) != 'undefined'
+                            .alert.alert-error
+                                a.close(data-dismiss='alert') &times;
+                                //i.icon-exclamation-sign
+                                #{error}
+                        else if typeof(shortUrl) != 'undefined'
+                            .alert.alert-success Your shortened URL is: 
+                                a(href="http://#{shortUrl}") #{shortUrl}
+            #api
 
