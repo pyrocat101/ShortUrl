@@ -19,15 +19,15 @@
       p.
         Simple URL shortener implemented in Node.js
       p.shortener
-        form.well(method='post')
-          input#input-url(type="text", name="url", placeholder="Enter URL here...")
+        form.well#form-url(method='post')
+          input#input-url(type="text", name="url", autocomplete='off', placeholder="Enter URL here...")
           button.btn.btn-primary#btn-submit Shorten!
           if typeof(error) != 'undefined'
-            .alert.alert-error
+            .alert.alert-error#input-error
               a.close(data-dismiss='alert') &times;
               h4.alert-heading #{error}
           else if typeof(shortUrl) != 'undefined'
-            .alert.alert-success Your shortened URL is: 
+            .alert.alert-success#short-url-label Your shortened URL is: 
               a(href="http://#{shortUrl}") #{shortUrl}
   hr.soften
   section#api
@@ -68,3 +68,4 @@ script(src='/assets/js/jquery.js')
 script(src='/assets/js/bootstrap-scrollspy.js')
 script(src='/assets/js/bootstrap-collapse.js')
 script(src='/assets/js/bootstrap-alert.js')
+script(src='/assets/js/url-shortener.js')
