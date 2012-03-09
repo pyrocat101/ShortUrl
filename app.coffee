@@ -11,14 +11,14 @@ db = redis.createClient()
 # Config
 app.configure ->
     app.set 'view engine', 'jade'
-    app.set 'view options', pretty: true
     app.use express.bodyParser()
     app.use '/assets', express.static(__dirname + '/assets')
     app.use express.favicon(__dirname + '/public/favicon.ico')
     app.use app.router # inferior to static so that static file resolution works
 
 app.configure 'development', ->
-    app.use express.errorHandler { dumpException: true, showStack: true }
+    app.use express.errorHandler dumpException: true, showStack: true
+    app.set 'view options', pretty: true
 
 app.configure 'production', ->
     app.use express.errorHandler()
