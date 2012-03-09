@@ -1,9 +1,9 @@
+fs = require 'fs'
 express = require 'express'
 redis = require 'redis'
 crypto = require 'crypto'
 urlparser = require 'url'
 base62 = require './base62'
-
 
 app = express.createServer()
 db = redis.createClient()
